@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VELORA — Luxury Bathroom & Private Spa Studio." />
+  <title>VELORA — Private Spa Architecture</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#131411;
+      --ink-2:#20221d;
+      --paper:#ede9df;
+      --paper-2:#dcd6c9;
+      --stone:#a99f90;
+      --bronze:#8b694d;
+      --sage:#777e72;
+      --line:rgba(19,20,17,.18);
+      --line-light:rgba(237,233,223,.18);
+      --composer-accent:#8b694d;
+      --pad:clamp(18px,3.8vw,68px);
+      --ease:cubic-bezier(.22,.68,0,1);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:auto}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:var(--paper);
+      font-family:"DM Sans",sans-serif;
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+    }
+    body.menu-open{overflow:hidden}
+    img{display:block;width:100%;height:100%;object-fit:cover}
+    a{color:inherit;text-decoration:none}
+    button,input,select{font:inherit}
+    button{color:inherit}
+    section{position:relative}
+    ::selection{background:var(--bronze);color:white}
+    .serif{font-family:"Playfair Display",serif;font-weight:400}
+    .kicker{
+      display:flex;align-items:center;gap:12px;
+      text-transform:uppercase;letter-spacing:.2em;font-size:9px;
+    }
+    .kicker::before{content:"";width:30px;height:1px;background:currentColor}
+    .button{
+      min-height:48px;padding:0 20px;
+      display:inline-flex;align-items:center;justify-content:center;gap:14px;
+      border:1px solid currentColor;background:transparent;
+      text-transform:uppercase;letter-spacing:.13em;font-size:9px;
+      cursor:pointer;transition:.35s ease;
+    }
+    .button:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px)}
+    .button.dark{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+    .button.dark:hover{background:var(--bronze);border-color:var(--bronze)}
+    .button.light{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+    .button.light:hover{background:var(--bronze);color:#fff;border-color:var(--bronze)}
+    .grain{
+      position:fixed;inset:0;z-index:300;pointer-events:none;opacity:.04;mix-blend-mode:multiply;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.85'/%3E%3C/svg%3E");
+    }
+
+    /* NAV */
+    .nav{
+      position:fixed;inset:0 0 auto;z-index:120;
+      height:72px;padding:0 var(--pad);
+      display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+      mix-blend-mode:difference;color:#fff;
+    }
+    .brand{
+      font-family:"Playfair Display",serif;font-size:26px;letter-spacing:.18em;
+    }
+    .nav-note{text-transform:uppercase;letter-spacing:.18em;font-size:8px;opacity:.72}
+    .nav-links{justify-self:end;display:flex;align-items:center;gap:28px}
+    .nav-links a{font-size:9px;text-transform:uppercase;letter-spacing:.14em}
+    .menu-toggle{display:none;border:0;background:none;padding:8px;text-transform:uppercase;letter-spacing:.14em;font-size:9px;cursor:pointer}
+    .mobile-menu{
+      position:fixed;inset:0;z-index:110;background:#151612;color:var(--paper);
+      padding:110px 22px 28px;
+      display:flex;flex-direction:column;justify-content:space-between;
+      transform:translateY(-104%);transition:transform .7s var(--ease);
+    }
+    .mobile-menu.active{transform:translateY(0)}
+    .mobile-menu a{
+      display:block;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.13);
+      font-family:"Playfair Display",serif;font-size:clamp(44px,14vw,76px);line-height:1.05;
+    }
+    .mobile-menu small{text-transform:uppercase;letter-spacing:.17em;opacity:.46}
+
+    /* 1 — HERO: EDITORIAL CUTS */
+    .hero{
+      min-height:100svh;background:var(--paper);overflow:hidden;padding:72px var(--pad) 0;
+      display:grid;grid-template-columns:1.05fr .7fr .48fr;grid-template-rows:1fr auto;gap:14px;
+    }
+    .hero-copy{
+      position:relative;z-index:5;padding:8vh 0 8vh;
+      display:flex;flex-direction:column;justify-content:space-between;
+    }
+    .hero-copy-top{max-width:400px}
+    .hero-copy-top p{margin:18px 0 0;font-size:11px;line-height:1.85;color:rgba(19,20,17,.62)}
+    .hero-title{
+      margin:0;
+      font-family:"Playfair Display",serif;font-weight:400;
+      font-size:clamp(78px,10.5vw,180px);line-height:1.05;letter-spacing:-.065em;
+      text-transform:uppercase;
+    }
+    .hero-title span{display:block;overflow:hidden;padding-bottom:0.15em;margin-bottom:-0.15em}
+    .hero-title i{display:block;font-style:normal;transform:translateY(110%)}
+    .hero-title span:nth-child(2){padding-left:10vw}
+    .hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:34px}
+    .hero-tall{
+      position:relative;align-self:stretch;overflow:hidden;margin-top:5vh;margin-bottom:8vh;
+      clip-path:inset(100% 0 0 0);
+    }
+    .hero-tall img{filter:saturate(.55) contrast(1.04);transform:scale(1.1)}
+    .hero-tall::after{
+      content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(17,18,15,.32));
+    }
+    .hero-slice{
+      position:relative;align-self:end;height:62vh;overflow:hidden;clip-path:inset(0 0 100% 0);
+    }
+    .hero-slice img{filter:saturate(.35);transform:scale(1.12)}
+    .hero-vertical{
+      position:absolute;right:-.3em;top:50%;transform:translateY(-50%) rotate(90deg);
+      transform-origin:center;
+      font-family:"Playfair Display",serif;font-size:clamp(56px,6vw,100px);
+      color:transparent;-webkit-text-stroke:1px rgba(237,233,223,.75);
+      z-index:3;white-space:nowrap;letter-spacing:.05em;
+    }
+    .hero-caption{
+      grid-column:2 / 4;
+      display:grid;grid-template-columns:1fr 1fr;gap:14px;
+      padding:18px 0 22px;border-top:1px solid var(--line);
+    }
+    .hero-caption-item{
+      display:flex;justify-content:space-between;gap:20px;
+      text-transform:uppercase;letter-spacing:.13em;font-size:8px;
+    }
+    .hero-caption-item span:first-child{opacity:.48}
+    .hero-page{
+      position:absolute;left:var(--pad);bottom:20px;
+      font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+    }
+    .hero-rule{
+      position:absolute;left:0;top:72px;bottom:0;width:1px;background:var(--line);
+      transform-origin:top;
+    }
+
+    /* 2 — RITUAL ACCORDION */
+    .ritual{
+      min-height:100svh;background:#191a17;color:var(--paper);
+      padding:120px var(--pad) 90px;overflow:hidden;
+    }
+    .ritual-heading{
+      display:grid;grid-template-columns:1fr .6fr;gap:7vw;align-items:end;margin-bottom:65px;
+    }
+    .ritual-heading h2{
+      margin:14px 0 0;font-size:clamp(64px,9vw,145px);line-height:1.05;letter-spacing:-.06em;
+    }
+    .ritual-heading p{
+      margin:0 0 6px;font-size:11px;line-height:1.9;color:rgba(237,233,223,.58);max-width:420px;
+    }
+    .ritual-accordion{
+      height:68vh;min-height:560px;display:flex;gap:8px;
+    }
+    .ritual-panel{
+      position:relative;flex:1;overflow:hidden;cursor:pointer;min-width:70px;
+      transition:flex .75s var(--ease);
+    }
+    .ritual-panel.active{flex:4.2}
+    .ritual-panel img{filter:saturate(.38) brightness(.62);transform:scale(1.06);transition:filter .7s ease}
+    .ritual-panel.active img{filter:saturate(.55) brightness(.72)}
+    .ritual-panel::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg,rgba(7,8,7,.08),rgba(7,8,7,.7));
+    }
+    .ritual-index{
+      position:absolute;top:18px;left:18px;z-index:3;
+      font-family:"Playfair Display",serif;font-size:22px;
+    }
+    .ritual-label{
+      position:absolute;left:18px;bottom:18px;z-index:3;
+      writing-mode:vertical-rl;transform:rotate(180deg);
+      text-transform:uppercase;letter-spacing:.18em;font-size:9px;
+      transition:opacity .3s ease;
+    }
+    .ritual-panel.active .ritual-label{opacity:0}
+    .ritual-content{
+      position:absolute;left:28px;right:28px;bottom:28px;z-index:4;
+      opacity:0;transform:translateY(24px);
+    }
+    .ritual-panel.active .ritual-content{opacity:1;transform:none;transition:.55s .28s var(--ease)}
+    .ritual-content h3{
+      margin:0 0 10px;font-family:"Playfair Display",serif;font-size:clamp(42px,5vw,80px);font-weight:400;
+    }
+    .ritual-content p{margin:0;max-width:430px;font-size:10px;line-height:1.8;color:rgba(237,233,223,.67)}
+    .ritual-control{
+      display:flex;justify-content:space-between;align-items:center;margin-top:18px;
+      font-size:8px;text-transform:uppercase;letter-spacing:.16em;color:rgba(237,233,223,.55);
+    }
+    .ritual-control-line{width:190px;height:1px;background:rgba(255,255,255,.18)}
+    .ritual-control-fill{width:25%;height:100%;background:var(--paper);transition:width .5s ease}
+
+    /* 3 — VERTICAL PRODUCT THEATRE */
+    .products{background:var(--paper);padding:130px var(--pad) 80px}
+    .products-intro{
+      display:grid;grid-template-columns:.72fr 1.28fr;gap:8vw;align-items:start;
+      padding-bottom:80px;border-bottom:1px solid var(--line);
+    }
+    .products-intro h2{
+      margin:14px 0 0;font-size:clamp(62px,8.4vw,136px);line-height:1.05;letter-spacing:-.06em;
+    }
+    .products-intro-right{
+      display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end;padding-top:36px;
+    }
+    .products-intro-right p{margin:0;max-width:460px;font-size:11px;line-height:1.9;color:rgba(19,20,17,.6)}
+    .products-count{font-family:"Playfair Display",serif;font-size:70px;line-height:1.05}
+    .product-theatre{position:relative}
+    .product-row{
+      min-height:105vh;
+      display:grid;grid-template-columns:.24fr 1fr .72fr;gap:clamp(20px,4vw,70px);
+      align-items:center;border-bottom:1px solid var(--line);
+      padding:11vh 0;
+    }
+    .product-side{
+      align-self:stretch;display:flex;flex-direction:column;justify-content:space-between;
+      padding:8px 0;
+    }
+    .product-no{font-family:"Playfair Display",serif;font-size:42px}
+    .product-type{
+      writing-mode:vertical-rl;transform:rotate(180deg);
+      text-transform:uppercase;letter-spacing:.18em;font-size:8px;opacity:.55;
+    }
+    .product-image{
+      height:74vh;min-height:560px;position:relative;overflow:hidden;background:#cbc4b8;
+    }
+    .product-image img{filter:saturate(.52);transform:scale(1.1)}
+    .product-image::after{
+      content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.18);pointer-events:none;
+    }
+    .product-info{align-self:end;padding-bottom:4vh}
+    .product-name{
+      margin:0;font-family:"Playfair Display",serif;font-size:clamp(58px,7vw,112px);
+      line-height:1.05;letter-spacing:-.055em;font-weight:400;
+    }
+    .product-description{
+      margin:24px 0 34px;max-width:430px;font-size:11px;line-height:1.9;color:rgba(19,20,17,.62);
+    }
+    .product-price{
+      display:flex;justify-content:space-between;gap:22px;align-items:end;
+      padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    }
+    .product-price span{text-transform:uppercase;letter-spacing:.15em;font-size:8px;opacity:.5}
+    .product-price strong{font-family:"Playfair Display",serif;font-size:clamp(29px,3vw,46px);font-weight:400}
+    .product-ctas{display:flex;gap:8px;margin-top:22px;flex-wrap:wrap}
+    .product-watermark{
+      position:absolute;right:0;top:8vh;
+      font-family:"Playfair Display",serif;font-size:clamp(90px,14vw,230px);
+      color:transparent;-webkit-text-stroke:1px rgba(19,20,17,.05);
+      pointer-events:none;white-space:nowrap;
+    }
+
+    /* 4 — MATERIAL LAB */
+    .materials{
+      min-height:100svh;background:#bdb5a7;color:var(--ink);
+      display:grid;grid-template-columns:.88fr 1.12fr;overflow:hidden;
+    }
+    .materials-left{
+      padding:120px var(--pad) 70px;
+      display:flex;flex-direction:column;justify-content:space-between;
+      border-right:1px solid rgba(19,20,17,.18);
+    }
+    .materials-left h2{
+      margin:14px 0 0;font-size:clamp(65px,8vw,128px);line-height:1.05;letter-spacing:-.06em;
+    }
+    .material-tabs{margin-top:55px}
+    .material-tab{
+      width:100%;display:grid;grid-template-columns:42px 1fr auto;align-items:center;
+      gap:16px;padding:18px 0;border:0;border-top:1px solid rgba(19,20,17,.2);
+      background:none;text-align:left;cursor:pointer;transition:padding .3s ease;
+    }
+    .material-tab:last-child{border-bottom:1px solid rgba(19,20,17,.2)}
+    .material-tab:hover,.material-tab.active{padding-left:10px}
+    .material-tab .dot{width:12px;height:12px;border-radius:50%;background:var(--tab-color)}
+    .material-tab strong{font-family:"Playfair Display",serif;font-size:26px;font-weight:400}
+    .material-tab small{text-transform:uppercase;letter-spacing:.14em;font-size:8px;opacity:.45}
+    .material-footer{
+      display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end;
+      margin-top:45px;
+    }
+    .material-footer p{margin:0;max-width:380px;font-size:10px;line-height:1.8;color:rgba(19,20,17,.6)}
+    .material-sample-no{font-family:"Playfair Display",serif;font-size:50px}
+    .materials-right{position:relative;min-height:100svh;overflow:hidden}
+    .material-image{position:absolute;inset:0;opacity:0;transform:scale(1.06)}
+    .material-image.active{opacity:1}
+    .material-image img{filter:saturate(.48)}
+    .material-image::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg,transparent 58%,rgba(16,17,14,.52));
+    }
+    .material-data{
+      position:absolute;left:32px;right:32px;bottom:32px;z-index:5;
+      color:var(--paper);
+      display:grid;grid-template-columns:1fr repeat(3,auto);gap:28px;align-items:end;
+      padding-top:18px;border-top:1px solid rgba(255,255,255,.3);
+    }
+    .material-data h3{
+      margin:0;font-family:"Playfair Display",serif;font-size:clamp(42px,5vw,76px);font-weight:400;
+    }
+    .material-stat span{display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.14em;font-size:7px;opacity:.5}
+    .material-stat strong{font-size:11px;font-weight:400}
+    .water-line{
+      position:absolute;left:-10%;right:-10%;top:43%;height:1px;background:rgba(255,255,255,.42);z-index:4;
+      transform:rotate(-3deg);
+    }
+    .water-line::after{
+      content:"";position:absolute;left:0;top:-16px;width:100%;height:32px;
+      background:linear-gradient(180deg,transparent,rgba(255,255,255,.12),transparent);
+      filter:blur(8px);
+    }
+
+    /* 5 — COMPOSER */
+    .composer{
+      min-height:100svh;background:#171815;color:var(--paper);overflow:hidden;
+      padding:100px var(--pad) 38px;
+    }
+    .composer-shell{
+      min-height:calc(100svh - 138px);
+      display:grid;grid-template-columns:.42fr 1fr;gap:14px;
+    }
+    .composer-rail{
+      border:1px solid var(--line-light);
+      padding:30px;
+      display:flex;flex-direction:column;justify-content:space-between;
+      background:rgba(255,255,255,.025);
+    }
+    .composer-rail h2{
+      margin:14px 0 0;font-size:clamp(52px,6vw,92px);line-height:1.05;letter-spacing:-.055em;
+    }
+    .composer-step{margin-top:34px}
+    .composer-step label{
+      display:block;margin-bottom:11px;text-transform:uppercase;letter-spacing:.16em;font-size:8px;opacity:.52;
+    }
+    .composer-options{display:flex;flex-direction:column}
+    .composer-option{
+      min-height:47px;padding:0;border:0;border-top:1px solid rgba(255,255,255,.14);
+      background:none;display:flex;align-items:center;justify-content:space-between;
+      cursor:pointer;text-align:left;text-transform:uppercase;letter-spacing:.1em;font-size:9px;
+      opacity:.5;transition:.3s ease;
+    }
+    .composer-option:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+    .composer-option::after{content:"○";font-size:15px}
+    .composer-option.active{opacity:1;color:var(--composer-accent);padding-left:8px}
+    .composer-option.active::after{content:"●"}
+    .composer-summary{margin-top:34px}
+    .composer-summary small{
+      display:block;margin-bottom:7px;text-transform:uppercase;letter-spacing:.15em;font-size:7px;opacity:.45;
+    }
+    .composer-summary strong{
+      display:block;font-family:"Playfair Display",serif;font-size:clamp(34px,3.5vw,54px);font-weight:400;
+    }
+    .composer-visual{position:relative;overflow:hidden}
+    .composer-image{position:absolute;inset:0;opacity:0;transform:scale(1.05)}
+    .composer-image.active{opacity:1}
+    .composer-image img{filter:saturate(.46) brightness(.72)}
+    .composer-image::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.48));
+    }
+    .composer-card{
+      position:absolute;left:28px;bottom:28px;z-index:6;width:min(480px,calc(100% - 56px));
+      background:rgba(20,21,18,.7);backdrop-filter:blur(18px);
+      border:1px solid rgba(255,255,255,.22);padding:24px;
+    }
+    .composer-card-top{
+      display:flex;justify-content:space-between;gap:16px;
+      text-transform:uppercase;letter-spacing:.15em;font-size:8px;opacity:.55;
+    }
+    .composer-name{
+      margin:16px 0 6px;font-family:"Playfair Display",serif;font-size:clamp(38px,4vw,62px);font-weight:400;
+    }
+    .composer-style{margin:0;color:var(--composer-accent);text-transform:uppercase;letter-spacing:.13em;font-size:8px}
+    .composer-list{list-style:none;margin:20px 0 0;padding:0}
+    .composer-list li{
+      display:flex;justify-content:space-between;gap:16px;padding:8px 0;
+      border-top:1px solid rgba(255,255,255,.13);font-size:9px;
+    }
+    .composer-list li span{opacity:.45}
+    .composer-actions{
+      position:absolute;right:28px;bottom:28px;z-index:6;display:flex;gap:8px;
+    }
+
+    /* 6 — CLOSING / BOOKING TICKET */
+    .closing{background:var(--paper);color:var(--ink);overflow:hidden}
+    .closing-scene{
+      min-height:78svh;position:relative;padding:110px var(--pad) 50px;
+      display:flex;align-items:flex-end;overflow:hidden;
+    }
+    .closing-scene::before{
+      content:"";position:absolute;inset:0;
+      background:
+        linear-gradient(90deg,rgba(8,9,8,.7),rgba(8,9,8,.12) 62%,rgba(8,9,8,.34)),
+        url("https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=2200&q=90") center/cover;
+      filter:saturate(.42) brightness(.7);
+      transform:scale(1.08);
+    }
+    .closing-copy{position:relative;z-index:3;color:var(--paper);max-width:1200px}
+    .closing-copy h2{
+      margin:14px 0 26px;font-size:clamp(66px,10vw,168px);line-height:1.05;letter-spacing:-.065em;
+    }
+    .closing-copy p{margin:0;max-width:520px;font-size:11px;line-height:1.85;color:rgba(237,233,223,.65)}
+    .booking-ticket{
+      position:relative;z-index:5;margin:-1px var(--pad) 0;
+      border:1px solid var(--line);background:var(--paper);
+      display:grid;grid-template-columns:.58fr 1.42fr;
+    }
+    .ticket-intro{
+      padding:34px;border-right:1px solid var(--line);
+      display:flex;flex-direction:column;justify-content:space-between;min-height:340px;
+    }
+    .ticket-intro h3{
+      margin:14px 0 0;font-family:"Playfair Display",serif;font-size:clamp(38px,4.4vw,68px);font-weight:400;line-height:1.05;
+    }
+    .ticket-meta{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:50px}
+    .ticket-meta span{display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.14em;font-size:7px;opacity:.45}
+    .ticket-meta strong{font-size:10px;font-weight:400;line-height:1.6}
+    .ticket-form{padding:34px;display:flex;flex-direction:column;justify-content:space-between}
+    .ticket-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+    .field{position:relative;border-bottom:1px solid var(--line)}
+    .field input,.field select{
+      width:100%;height:58px;border:0;outline:0;background:transparent;color:var(--ink);
+      appearance:none;border-radius:0;font-size:11px;
+    }
+    .field input::placeholder{color:rgba(19,20,17,.48)}
+    .field::after{
+      content:"";position:absolute;left:0;right:100%;bottom:-1px;height:1px;background:var(--bronze);
+      transition:right .4s ease;
+    }
+    .field:focus-within::after{right:0}
+    .ticket-submit{
+      margin-top:28px;display:flex;justify-content:space-between;align-items:center;gap:24px;
+    }
+    .ticket-submit p{margin:0;max-width:330px;font-size:9px;line-height:1.7;color:rgba(19,20,17,.5)}
+    .closing-marquee{
+      overflow:hidden;height:54px;display:flex;align-items:center;
+      margin-top:40px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    }
+    .marquee-track{display:flex;width:max-content;animation:marquee 22s linear infinite}
+    .marquee-line{
+      white-space:nowrap;padding-right:34px;display:flex;gap:34px;align-items:center;
+      font-family:"Playfair Display",serif;font-size:18px;color:rgba(19,20,17,.58);
+    }
+    .marquee-line::after{content:"✦";color:var(--bronze)}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+    .footer{
+      min-height:110px;padding:0 var(--pad);
+      display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+    }
+    .footer-brand{font-family:"Playfair Display",serif;font-size:30px;letter-spacing:.17em}
+    .footer-nav{display:flex;gap:28px;text-transform:uppercase;letter-spacing:.13em;font-size:8px}
+    .footer-copy{justify-self:end;font-size:8px;opacity:.45}
+
+    @media (max-width:1050px){
+      .nav-note{display:none}
+      .nav{grid-template-columns:1fr 1fr}
+      .hero{grid-template-columns:1fr .64fr}
+      .hero-slice{display:none}
+      .hero-caption{grid-column:2}
+      .product-row{grid-template-columns:.18fr 1fr .78fr}
+      .materials{grid-template-columns:.78fr 1.22fr}
+      .composer-shell{grid-template-columns:.46fr 1fr}
+      .booking-ticket{grid-template-columns:.7fr 1.3fr}
+    }
+
+    @media (max-width:780px){
+      :root{--pad:20px}
+      .nav{height:66px}
+      .nav-links a{display:none}
+      .menu-toggle{display:block}
+      .hero{
+        min-height:980px;padding-top:66px;
+        display:block;
+      }
+      .hero-copy{height:500px;padding:70px 0 40px}
+      .hero-title{font-size:clamp(64px,20vw,104px)}
+      .hero-copy-top{max-width:70vw}
+      .hero-tall{height:390px;margin:0 0 20px;clip-path:inset(0)}
+      .hero-caption{display:grid;grid-template-columns:1fr;padding:16px 0 24px}
+      .hero-rule{display:none}
+      .hero-page{display:none}
+
+      .ritual{padding:100px 20px 70px}
+      .ritual-heading{display:block;margin-bottom:48px}
+      .ritual-heading h2{font-size:66px}
+      .ritual-heading p{margin-top:28px}
+      .ritual-accordion{height:auto;display:block}
+      .ritual-panel,.ritual-panel.active{height:150px;min-width:0;margin-bottom:8px;transition:height .65s var(--ease)}
+      .ritual-panel.active{height:520px}
+      .ritual-label{writing-mode:initial;transform:none}
+      .ritual-content{left:20px;right:20px;bottom:20px}
+      .ritual-control-line{width:120px}
+
+      .products{padding:100px 20px 60px}
+      .products-intro{display:block;padding-bottom:55px}
+      .products-intro h2{font-size:64px}
+      .products-intro-right{padding-top:28px}
+      .product-row{
+        min-height:0;display:block;padding:78px 0;
+      }
+      .product-side{
+        height:auto;display:flex;flex-direction:row;align-items:center;margin-bottom:14px;
+      }
+      .product-type{writing-mode:initial;transform:none}
+      .product-image{height:58vh;min-height:430px}
+      .product-info{padding:34px 0 0}
+      .product-name{font-size:64px}
+      .product-watermark{display:none}
+
+      .materials{display:block;min-height:0}
+      .materials-left{padding:100px 20px 70px;border-right:0}
+      .materials-left h2{font-size:66px}
+      .material-footer{margin-top:38px}
+      .materials-right{min-height:70vh}
+      .material-data{left:20px;right:20px;bottom:20px;grid-template-columns:1fr 1fr}
+      .material-data h3{grid-column:1/-1}
+      .material-stat:last-child{display:none}
+
+      .composer{padding:90px 20px 20px;min-height:1180px}
+      .composer-shell{display:block;min-height:0}
+      .composer-rail{min-height:540px;padding:24px}
+      .composer-visual{height:580px;margin-top:12px}
+      .composer-card{left:16px;right:16px;bottom:16px;width:auto}
+      .composer-actions{left:16px;right:16px;bottom:auto;top:16px}
+      .composer-actions .button{flex:1}
+
+      .closing-scene{min-height:74svh;padding:100px 20px 46px}
+      .closing-copy h2{font-size:66px}
+      .booking-ticket{margin:0 20px;display:block}
+      .ticket-intro{min-height:300px;border-right:0;border-bottom:1px solid var(--line);padding:26px}
+      .ticket-form{padding:26px}
+      .ticket-grid{grid-template-columns:1fr}
+      .ticket-submit{display:block}
+      .ticket-submit .button{width:100%;margin-top:18px}
+      .footer{min-height:150px;grid-template-columns:1fr auto}
+      .footer-nav{display:none}
+    }
+
+    @media (max-width:480px){
+      .hero{min-height:930px}
+      .hero-copy{height:450px}
+      .hero-title{font-size:58px}
+      .hero-actions{display:grid;grid-template-columns:1fr}
+      .hero-actions .button:first-child{display:none}
+      .ritual-panel.active{height:470px}
+      .products-intro-right{grid-template-columns:1fr}
+      .products-count{display:none}
+      .product-ctas{display:grid;grid-template-columns:1fr}
+      .material-data{grid-template-columns:1fr}
+      .material-stat{display:none}
+      .composer{min-height:1230px}
+      .composer-rail h2{font-size:58px}
+      .composer-visual{height:610px}
+      .closing-copy h2{font-size:56px}
+      .ticket-meta{grid-template-columns:1fr}
+      .footer-copy{display:none}
+      .footer{grid-template-columns:1fr}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header class="nav">
+    <a class="brand" href="#hero">VELORA</a>
+    <div class="nav-note">Private Spa Architecture · Edition 2026</div>
+    <div class="nav-links">
+      <a href="#products">Collection</a>
+      <a href="#materials">Material Lab</a>
+      <a href="#composer">Composer</a>
+      <button class="menu-toggle" type="button">Menu</button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" aria-hidden="true">
+    <div>
+      <a href="#ritual">Ritual</a>
+      <a href="#products">Collection</a>
+      <a href="#materials">Materials</a>
+      <a href="#composer">Composer</a>
+      <a href="#closing">Appointment</a>
+    </div>
+    <small>VELORA · Enter the quiet</small>
+  </div>
+
+  <main>
+    <!-- 1. HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-rule"></div>
+
+      <div class="hero-copy">
+        <div class="hero-copy-top">
+          <div class="kicker">Private spa architecture</div>
+          <p>Không gian riêng tư nhất trong ngôi nhà được kiến tạo như một nghi thức — bằng đá, nước, nhiệt độ và ánh sáng.</p>
+        </div>
+
+        <div>
+          <h1 class="hero-title">
+            <span><i>Enter</i></span>
+            <span><i>the quiet</i></span>
+          </h1>
+          <div class="hero-actions">
+            <a class="button dark" href="#products">Khám phá collection <span>↘</span></a>
+            <a class="button" href="#closing">Đặt lịch khảo sát <span>→</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-tall">
+        <img src="https://images.unsplash.com/photo-1629079447777-1e605162dc8d?auto=format&fit=crop&w=1500&q=90" alt="Bồn tắm đá trong không gian spa">
+      </div>
+
+      <div class="hero-slice">
+        <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1200&q=90" alt="Không gian phòng tắm kiến trúc">
+        <div class="hero-vertical">PRIVATE RITUAL</div>
+      </div>
+
+      <div class="hero-caption">
+        <div class="hero-caption-item"><span>Material</span><strong>Travertine · Nickel</strong></div>
+        <div class="hero-caption-item"><span>Project scale</span><strong>Villa · Penthouse · Resort</strong></div>
+      </div>
+
+      <div class="hero-page">Cover study / 01</div>
+    </section>
+
+    <!-- 2. RITUAL ACCORDION -->
+    <section class="ritual" id="ritual">
+      <div class="ritual-heading">
+        <div>
+          <div class="kicker">02 · The ritual</div>
+          <h2 class="serif">Bốn trạng thái.<br>Một khoảng lặng.</h2>
+        </div>
+        <p>Không kể câu chuyện bằng một ảnh nền cố định. Mỗi giai đoạn mở ra như một cánh cửa riêng, để người xem chủ động bước qua toàn bộ nghi thức.</p>
+      </div>
+
+      <div class="ritual-accordion">
+        <article class="ritual-panel active" data-panel="0">
+          <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1400&q=88" alt="Arrival">
+          <span class="ritual-index">01</span>
+          <span class="ritual-label">Arrival</span>
+          <div class="ritual-content">
+            <h3>Arrival</h3>
+            <p>Ánh sáng thấp, bề mặt ấm và lối vào kín đáo giúp cơ thể tách khỏi nhịp sống bên ngoài trước khi chạm vào nước.</p>
+          </div>
+        </article>
+
+        <article class="ritual-panel" data-panel="1">
+          <img src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&w=1400&q=88" alt="Immersion">
+          <span class="ritual-index">02</span>
+          <span class="ritual-label">Immersion</span>
+          <div class="ritual-content">
+            <h3>Immersion</h3>
+            <p>Độ sâu bồn, góc tựa lưng và nhiệt độ nước được cân chỉnh để tạo một khoảng dừng hoàn toàn riêng tư.</p>
+          </div>
+        </article>
+
+        <article class="ritual-panel" data-panel="2">
+          <img src="https://images.unsplash.com/photo-1629078691977-dc51747c0263?auto=format&fit=crop&w=1400&q=88" alt="Steam">
+          <span class="ritual-index">03</span>
+          <span class="ritual-label">Steam</span>
+          <div class="ritual-content">
+            <h3>Steam</h3>
+            <p>Hơi nước làm mềm cạnh đá, xóa ranh giới giữa vật thể và không khí, khiến kiến trúc trở nên nhẹ hơn.</p>
+          </div>
+        </article>
+
+        <article class="ritual-panel" data-panel="3">
+          <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1400&q=88" alt="Silence">
+          <span class="ritual-index">04</span>
+          <span class="ritual-label">Silence</span>
+          <div class="ritual-content">
+            <h3>Silence</h3>
+            <p>Chỉ còn đá, ánh sáng và tiếng nước đủ nhỏ để căn phòng lắng xuống. Sự xa xỉ nằm ở những gì được lược bỏ.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="ritual-control">
+        <span>Chọn một chapter</span>
+        <div class="ritual-control-line"><div class="ritual-control-fill"></div></div>
+        <span class="ritual-current">01 / 04</span>
+      </div>
+    </section>
+
+    <!-- 3. PRODUCT THEATRE -->
+    <section class="products" id="products">
+      <div class="products-intro">
+        <div>
+          <div class="kicker">03 · Signature collection</div>
+          <h2 class="serif">Sản phẩm như<br>một phần kiến trúc.</h2>
+        </div>
+        <div class="products-intro-right">
+          <p>Không có product grid. Mỗi thiết kế được trình bày theo đúng tỷ lệ, vật liệu và cảm giác không gian mà nó tạo ra.</p>
+          <span class="products-count">04</span>
+        </div>
+      </div>
+
+      <div class="product-theatre">
+        <span class="product-watermark">VELORA OBJECTS</span>
+
+        <article class="product-row">
+          <div class="product-side">
+            <span class="product-no">01</span>
+            <span class="product-type">Stone bath</span>
+          </div>
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1629079447777-1e605162dc8d?auto=format&fit=crop&w=1500&q=90" alt="MONO Stone Bath">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">MONO<br>STONE</h3>
+            <p class="product-description">Bồn tắm đá nguyên khối với thành mỏng, lòng sâu và bề mặt mờ. Được đặt như một vật thể điêu khắc, không phải một thiết bị vệ sinh.</p>
+            <div class="product-price"><span>Giá tham khảo</span><strong>286.000.000₫</strong></div>
+            <div class="product-ctas">
+              <a class="button dark" href="#closing">Xem chi tiết</a>
+              <a class="button" href="#closing">Đặt lịch xem mẫu</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-row">
+          <div class="product-side">
+            <span class="product-no">02</span>
+            <span class="product-type">Rain system</span>
+          </div>
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1500&q=90" alt="ARC Rain System">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">ARC<br>RAIN</h3>
+            <p class="product-description">Hệ sen âm trần đa chế độ với dòng nước rộng, van nhiệt chính xác và bề mặt brushed nickel không tạo phản xạ gắt.</p>
+            <div class="product-price"><span>Giá tham khảo</span><strong>128.000.000₫</strong></div>
+            <div class="product-ctas">
+              <a class="button dark" href="#closing">Xem chi tiết</a>
+              <a class="button" href="#closing">Đặt lịch xem mẫu</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-row">
+          <div class="product-side">
+            <span class="product-no">03</span>
+            <span class="product-type">Sculptural basin</span>
+          </div>
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&w=1500&q=90" alt="VEIL Basin">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">VEIL<br>BASIN</h3>
+            <p class="product-description">Lavabo điêu khắc bằng đá đúc khoáng, mép mảnh, lòng sâu và thoát nước ẩn để bề mặt luôn giữ được vẻ nguyên khối.</p>
+            <div class="product-price"><span>Giá tham khảo</span><strong>74.500.000₫</strong></div>
+            <div class="product-ctas">
+              <a class="button dark" href="#closing">Xem chi tiết</a>
+              <a class="button" href="#closing">Đặt lịch xem mẫu</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-row">
+          <div class="product-side">
+            <span class="product-no">04</span>
+            <span class="product-type">Private sauna</span>
+          </div>
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1500&q=90" alt="MIST Private Sauna">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">MIST<br>SAUNA</h3>
+            <p class="product-description">Phòng xông hơi riêng với kính khói, ghế đá sưởi và hệ hơi nước êm, tích hợp hoàn toàn vào kiến trúc phòng tắm.</p>
+            <div class="product-price"><span>Giá tham khảo</span><strong>368.000.000₫</strong></div>
+            <div class="product-ctas">
+              <a class="button dark" href="#closing">Xem chi tiết</a>
+              <a class="button" href="#closing">Đặt lịch xem mẫu</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4. MATERIAL LAB -->
+    <section class="materials" id="materials">
+      <div class="materials-left">
+        <div>
+          <div class="kicker">04 · Material lab</div>
+          <h2 class="serif">Chạm vào<br>sự tĩnh lặng.</h2>
+
+          <div class="material-tabs">
+            <button class="material-tab active" data-material="travertine" style="--tab-color:#b9a88d">
+              <span class="dot"></span><strong>Warm Travertine</strong><small>01</small>
+            </button>
+            <button class="material-tab" data-material="carrara" style="--tab-color:#dedbd2">
+              <span class="dot"></span><strong>Carrara Marble</strong><small>02</small>
+            </button>
+            <button class="material-tab" data-material="nickel" style="--tab-color:#9fa39f">
+              <span class="dot"></span><strong>Brushed Nickel</strong><small>03</small>
+            </button>
+            <button class="material-tab" data-material="oak" style="--tab-color:#8c684b">
+              <span class="dot"></span><strong>Smoked Oak</strong><small>04</small>
+            </button>
+          </div>
+        </div>
+
+        <div class="material-footer">
+          <p id="materialDescription">Travertine được xử lý chống thấm mờ, giữ bề mặt ấm và tự nhiên khi tiếp xúc với nước.</p>
+          <span class="material-sample-no" id="materialSample">01</span>
+        </div>
+      </div>
+
+      <div class="materials-right">
+        <div class="material-image active" data-image="travertine">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=90" alt="Warm Travertine">
+        </div>
+        <div class="material-image" data-image="carrara">
+          <img src="https://images.unsplash.com/photo-1617103996702-96ff29b1c467?auto=format&fit=crop&w=1600&q=90" alt="Carrara Marble">
+        </div>
+        <div class="material-image" data-image="nickel">
+          <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1600&q=90" alt="Brushed Nickel">
+        </div>
+        <div class="material-image" data-image="oak">
+          <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&q=90" alt="Smoked Oak">
+        </div>
+
+        <div class="water-line"></div>
+
+        <div class="material-data">
+          <h3 id="materialName">Warm Travertine</h3>
+          <div class="material-stat"><span>Finish</span><strong id="materialFinish">Honed</strong></div>
+          <div class="material-stat"><span>Absorption</span><strong id="materialAbsorption">Low</strong></div>
+          <div class="material-stat"><span>Origin</span><strong id="materialOrigin">Italy</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. SPA COMPOSER -->
+    <section class="composer" id="composer">
+      <div class="composer-shell">
+        <aside class="composer-rail">
+          <div>
+            <div class="kicker">05 · Spa composer</div>
+            <h2 class="serif">Compose<br>your ritual.</h2>
+
+            <div class="composer-step">
+              <label>01 · Quy mô không gian</label>
+              <div class="composer-options">
+                <button class="composer-option active" data-size="small">Phòng tắm nhỏ</button>
+                <button class="composer-option" data-size="medium">Phòng trung bình</button>
+                <button class="composer-option" data-size="master">Master spa suite</button>
+              </div>
+            </div>
+
+            <div class="composer-step">
+              <label>02 · Ngôn ngữ vật liệu</label>
+              <div class="composer-options">
+                <button class="composer-option active" data-style="stone">Natural stone</button>
+                <button class="composer-option" data-style="warm">Warm travertine</button>
+                <button class="composer-option" data-style="dark">Dark spa</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="composer-summary">
+            <small>Ngân sách dự kiến</small>
+            <strong id="composerPrice">189.000.000₫</strong>
+          </div>
+        </aside>
+
+        <div class="composer-visual">
+          <div class="composer-image active" data-composer-image="stone">
+            <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1900&q=90" alt="Natural stone spa">
+          </div>
+          <div class="composer-image" data-composer-image="warm">
+            <img src="https://images.unsplash.com/photo-1629078691977-dc51747c0263?auto=format&fit=crop&w=1900&q=90" alt="Warm travertine spa">
+          </div>
+          <div class="composer-image" data-composer-image="dark">
+            <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1900&q=90" alt="Dark private spa">
+          </div>
+
+          <div class="composer-card" aria-live="polite">
+            <div class="composer-card-top"><span>VELORA proposal</span><span id="composerIndex">01 / 03</span></div>
+            <h3 class="composer-name" id="composerName">Quiet Bath</h3>
+            <p class="composer-style" id="composerStyle">Natural stone · 2700K</p>
+            <ul class="composer-list" id="composerList">
+              <li><span>01</span><strong>VEIL Basin</strong></li>
+              <li><span>02</span><strong>ARC Rain System</strong></li>
+              <li><span>03</span><strong>Ambient Lighting</strong></li>
+            </ul>
+          </div>
+
+          <div class="composer-actions">
+            <a class="button light" href="#closing">Nhận bản đề xuất</a>
+            <a class="button" href="#closing">Đặt lịch khảo sát</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CLOSING -->
+    <section class="closing" id="closing">
+      <div class="closing-scene">
+        <div class="closing-copy">
+          <div class="kicker">06 · Private appointment</div>
+          <h2 class="serif">Bắt đầu từ căn phòng.<br>Kết thúc bằng một nghi thức.</h2>
+          <p>Mang bản vẽ, hình ảnh hoặc chỉ một ý tưởng. VELORA sẽ xây dựng một private spa phù hợp với kiến trúc, thói quen và ngân sách của bạn.</p>
+        </div>
+      </div>
+
+      <div class="booking-ticket">
+        <div class="ticket-intro">
+          <div>
+            <div class="kicker">Appointment ticket</div>
+            <h3>Khảo sát không gian riêng.</h3>
+          </div>
+          <div class="ticket-meta">
+            <div><span>Showroom</span><strong>68 Bạch Đằng<br>Đà Nẵng</strong></div>
+            <div><span>Hotline</span><strong>0905 168 826<br>09:00 — 19:00</strong></div>
+          </div>
+        </div>
+
+        <form class="ticket-form" id="bookingForm">
+          <div class="ticket-grid">
+            <label class="field"><input type="text" name="name" placeholder="Họ và tên" required></label>
+            <label class="field"><input type="tel" name="phone" placeholder="Số điện thoại" required></label>
+            <label class="field">
+              <select name="space" required>
+                <option value="">Loại không gian</option>
+                <option>Phòng tắm căn hộ</option>
+                <option>Master bathroom</option>
+                <option>Private spa</option>
+                <option>Villa / Resort</option>
+              </select>
+            </label>
+            <label class="field">
+              <select name="budget" required>
+                <option value="">Mức ngân sách</option>
+                <option>Dưới 200 triệu</option>
+                <option>200 — 500 triệu</option>
+                <option>500 triệu — 1 tỷ</option>
+                <option>Trên 1 tỷ</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="ticket-submit">
+            <p>Thông tin chỉ được sử dụng để liên hệ và chuẩn bị nội dung cho buổi khảo sát riêng.</p>
+            <button class="button dark" type="submit">Xác nhận lịch tư vấn <span>→</span></button>
+          </div>
+        </form>
+      </div>
+
+      <div class="closing-marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <div class="marquee-line">Spatial Study · Stone Selection · Water Systems · Steam Room · Lighting · Installation</div>
+          <div class="marquee-line">Spatial Study · Stone Selection · Water Systems · Steam Room · Lighting · Installation</div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <a class="footer-brand" href="#hero">VELORA</a>
+        <nav class="footer-nav">
+          <a href="#ritual">Ritual</a>
+          <a href="#products">Collection</a>
+          <a href="#materials">Materials</a>
+          <a href="#composer">Composer</a>
+        </nav>
+        <div class="footer-copy">© 2026 VELORA Studio</div>
+      </footer>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let lenis;
+
+      if (!reduced && window.Lenis) {
+        lenis = new Lenis({
+          duration: 1.1,
+          smoothWheel: true,
+          wheelMultiplier: .9,
+          touchMultiplier: 1.15
+        });
+        lenis.on("scroll", ScrollTrigger.update);
+        gsap.ticker.add(time => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+      }
+
+      // Navigation
+      const toggle = document.querySelector(".menu-toggle");
+      const mobileMenu = document.querySelector(".mobile-menu");
+
+      const closeMenu = () => {
+        mobileMenu.classList.remove("active");
+        mobileMenu.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("menu-open");
+        toggle.textContent = "Menu";
+      };
+
+      toggle.addEventListener("click", () => {
+        const open = mobileMenu.classList.toggle("active");
+        mobileMenu.setAttribute("aria-hidden", String(!open));
+        document.body.classList.toggle("menu-open", open);
+        toggle.textContent = open ? "Đóng" : "Menu";
+      });
+
+      mobileMenu.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+
+      document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener("click", event => {
+          const target = document.querySelector(link.getAttribute("href"));
+          if (!target || !lenis) return;
+          event.preventDefault();
+          lenis.scrollTo(target, { duration: 1.25 });
+        });
+      });
+
+      // Hero — editorial cuts
+      const heroTl = gsap.timeline({ defaults: { ease: "power4.out" } });
+      heroTl
+        .to(".hero-title i", { yPercent: -110, duration: 1.2, stagger: .08, delay: .12 })
+        .to(".hero-tall", { clipPath: "inset(0% 0 0 0)", duration: 1.35 }, .12)
+        .to(".hero-tall img", { scale: 1, duration: 1.7 }, .12)
+        .to(".hero-slice", { clipPath: "inset(0 0 0% 0)", duration: 1.25 }, .28)
+        .to(".hero-slice img", { scale: 1, duration: 1.65 }, .28)
+        .from(".hero-copy-top, .hero-actions, .hero-caption, .hero-page", {
+          opacity: 0, y: 24, duration: .8, stagger: .08
+        }, .55)
+        .from(".hero-rule", { scaleY: 0, duration: 1.15 }, .2);
+
+      if (!reduced) {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: ".hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.05
+          }
+        })
+        .to(".hero-tall img", { yPercent: 12, scale: 1.08 }, 0)
+        .to(".hero-slice img", { yPercent: -8, scale: 1.08 }, 0)
+        .to(".hero-title", { xPercent: -5 }, 0)
+        .to(".hero-copy-top", { yPercent: 35, opacity: .2 }, 0);
+      }
+
+      // Ritual accordion
+      const ritualPanels = [...document.querySelectorAll(".ritual-panel")];
+      const ritualFill = document.querySelector(".ritual-control-fill");
+      const ritualCurrent = document.querySelector(".ritual-current");
+
+      function setRitual(index) {
+        ritualPanels.forEach((panel, i) => panel.classList.toggle("active", i === index));
+        ritualFill.style.width = `${(index + 1) * 25}%`;
+        ritualCurrent.textContent = `0${index + 1} / 04`;
+      }
+
+      ritualPanels.forEach((panel, index) => {
+        panel.addEventListener("mouseenter", () => setRitual(index));
+        panel.addEventListener("click", () => setRitual(index));
+
+        gsap.from(panel, {
+          y: 70,
+          opacity: 0,
+          duration: 1,
+          delay: index * .06,
+          scrollTrigger: { trigger: ".ritual-accordion", start: "top 78%" }
+        });
+      });
+
+      // Vertical product theatre
+      gsap.from(".products-intro > *", {
+        y: 70, opacity: 0, duration: 1.05, stagger: .14,
+        scrollTrigger: { trigger: ".products-intro", start: "top 78%" }
+      });
+
+      gsap.utils.toArray(".product-row").forEach((row, index) => {
+        const image = row.querySelector(".product-image");
+        const img = image.querySelector("img");
+        const info = row.querySelector(".product-info");
+
+        gsap.from(image, {
+          clipPath: index % 2 ? "inset(0 100% 0 0)" : "inset(100% 0 0 0)",
+          duration: 1.25,
+          ease: "power4.inOut",
+          scrollTrigger: { trigger: row, start: "top 75%" }
+        });
+
+        gsap.fromTo(img, { scale: 1.16 }, {
+          scale: 1,
+          duration: 1.7,
+          ease: "power3.out",
+          scrollTrigger: { trigger: row, start: "top 75%" }
+        });
+
+        gsap.from(info.children, {
+          y: 42,
+          opacity: 0,
+          stagger: .09,
+          duration: .9,
+          scrollTrigger: { trigger: row, start: "top 68%" }
+        });
+
+        if (!reduced) {
+          gsap.to(img, {
+            yPercent: 12,
+            ease: "none",
+            scrollTrigger: {
+              trigger: row,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1
+            }
+          });
+        }
+      });
+
+      // Material lab
+      const materialData = {
+        travertine: {
+          sample: "01",
+          name: "Warm Travertine",
+          description: "Travertine được xử lý chống thấm mờ, giữ bề mặt ấm và tự nhiên khi tiếp xúc với nước.",
+          finish: "Honed",
+          absorption: "Low",
+          origin: "Italy",
+          background: "#bdb5a7"
+        },
+        carrara: {
+          sample: "02",
+          name: "Carrara Marble",
+          description: "Vân đá sáng, tinh tế và đủ tương phản để làm nền cho kim loại mờ cùng ánh sáng ấm.",
+          finish: "Silk matt",
+          absorption: "Very low",
+          origin: "Tuscany",
+          background: "#d4d1ca"
+        },
+        nickel: {
+          sample: "03",
+          name: "Brushed Nickel",
+          description: "Kim loại tông lạnh phản chiếu nước nhẹ nhàng, không bóng gắt và không phá vỡ không gian yên tĩnh.",
+          finish: "Brushed",
+          absorption: "Zero",
+          origin: "Germany",
+          background: "#afb2ae"
+        },
+        oak: {
+          sample: "04",
+          name: "Smoked Oak",
+          description: "Gỗ sồi hun khói bổ sung độ ấm xúc giác, được dùng ở khu khô và các chi tiết lưu trữ.",
+          finish: "Open pore",
+          absorption: "Sealed",
+          origin: "Europe",
+          background: "#9c816c"
+        }
+      };
+
+      document.querySelectorAll(".material-tab").forEach(tab => {
+        tab.addEventListener("click", () => {
+          const key = tab.dataset.material;
+          const data = materialData[key];
+
+          document.querySelectorAll(".material-tab").forEach(item => item.classList.toggle("active", item === tab));
+
+          const current = document.querySelector(".material-image.active");
+          const next = document.querySelector(`.material-image[data-image="${key}"]`);
+
+          if (current !== next) {
+            current.classList.remove("active");
+            next.classList.add("active");
+            gsap.to(current, { opacity: 0, scale: 1.1, duration: .65, ease: "power2.inOut" });
+            gsap.fromTo(next, { opacity: 0, scale: 1.1 }, { opacity: 1, scale: 1.06, duration: .75, ease: "power2.inOut" });
+          }
+
+          gsap.to(["#materialName", "#materialDescription", "#materialSample", "#materialFinish", "#materialAbsorption", "#materialOrigin"], {
+            opacity: 0, y: 10, duration: .18,
+            onComplete: () => {
+              document.getElementById("materialName").textContent = data.name;
+              document.getElementById("materialDescription").textContent = data.description;
+              document.getElementById("materialSample").textContent = data.sample;
+              document.getElementById("materialFinish").textContent = data.finish;
+              document.getElementById("materialAbsorption").textContent = data.absorption;
+              document.getElementById("materialOrigin").textContent = data.origin;
+              document.querySelector(".materials").style.backgroundColor = data.background;
+
+              gsap.to(["#materialName", "#materialDescription", "#materialSample", "#materialFinish", "#materialAbsorption", "#materialOrigin"], {
+                opacity: 1, y: 0, duration: .35, stagger: .025
+              });
+            }
+          });
+        });
+      });
+
+      gsap.from(".materials-left > *", {
+        y: 60, opacity: 0, duration: 1, stagger: .12,
+        scrollTrigger: { trigger: ".materials", start: "top 72%" }
+      });
+
+      gsap.from(".materials-right", {
+        clipPath: "inset(0 0 0 100%)",
+        duration: 1.3,
+        ease: "power4.inOut",
+        scrollTrigger: { trigger: ".materials", start: "top 72%" }
+      });
+
+      gsap.to(".water-line", {
+        xPercent: 12,
+        yPercent: -18,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".materials",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1
+        }
+      });
+
+      // Composer
+      const roomData = {
+        small: {
+          index: "01 / 03",
+          name: "Quiet Bath",
+          price: 189000000,
+          items: ["VEIL Basin", "ARC Rain System", "Ambient Lighting"]
+        },
+        medium: {
+          index: "02 / 03",
+          name: "Thermal Suite",
+          price: 428000000,
+          items: ["MONO Stone Bath", "ARC Rain System", "VEIL Basin", "Heated Stone Bench"]
+        },
+        master: {
+          index: "03 / 03",
+          name: "Private Sanctuary",
+          price: 890000000,
+          items: ["MONO Stone Bath", "MIST Sauna", "ARC Rain × 2", "Full Spa Lighting"]
+        }
+      };
+
+      const styleData = {
+        stone: { name: "Natural stone · 2700K", factor: 1, accent: "#a38b73" },
+        warm: { name: "Warm travertine · 2400K", factor: 1.08, accent: "#b37750" },
+        dark: { name: "Dark spa · 2200K", factor: 1.12, accent: "#7e8c86" }
+      };
+
+      let selectedSize = "small";
+      let selectedStyle = "stone";
+      const formatPrice = value => `${Math.round(value).toLocaleString("vi-VN")}₫`;
+
+      function updateComposer() {
+        const room = roomData[selectedSize];
+        const style = styleData[selectedStyle];
+
+        document.documentElement.style.setProperty("--composer-accent", style.accent);
+
+        gsap.to(["#composerName", "#composerStyle", "#composerIndex", "#composerPrice", "#composerList"], {
+          opacity: 0,
+          y: 10,
+          duration: .18,
+          onComplete: () => {
+            document.getElementById("composerName").textContent = room.name;
+            document.getElementById("composerStyle").textContent = style.name;
+            document.getElementById("composerIndex").textContent = room.index;
+            document.getElementById("composerPrice").textContent = formatPrice(room.price * style.factor);
+            document.getElementById("composerList").innerHTML = room.items
+              .map((item, index) => `<li><span>0${index + 1}</span><strong>${item}</strong></li>`)
+              .join("");
+
+            gsap.to(["#composerName", "#composerStyle", "#composerIndex", "#composerPrice", "#composerList"], {
+              opacity: 1, y: 0, duration: .35, stagger: .03
+            });
+          }
+        });
+
+        const current = document.querySelector(".composer-image.active");
+        const next = document.querySelector(`.composer-image[data-composer-image="${selectedStyle}"]`);
+
+        if (current !== next) {
+          current.classList.remove("active");
+          next.classList.add("active");
+          gsap.to(current, { opacity: 0, scale: 1.1, duration: .7, ease: "power2.inOut" });
+          gsap.fromTo(next, { opacity: 0, scale: 1.1 }, { opacity: 1, scale: 1.05, duration: .8, ease: "power2.inOut" });
+        }
+      }
+
+      document.querySelectorAll("[data-size]").forEach(button => {
+        button.addEventListener("click", () => {
+          selectedSize = button.dataset.size;
+          document.querySelectorAll("[data-size]").forEach(item => item.classList.toggle("active", item === button));
+          updateComposer();
+        });
+      });
+
+      document.querySelectorAll("[data-style]").forEach(button => {
+        button.addEventListener("click", () => {
+          selectedStyle = button.dataset.style;
+          document.querySelectorAll("[data-style]").forEach(item => item.classList.toggle("active", item === button));
+          updateComposer();
+        });
+      });
+
+      gsap.from(".composer-rail", {
+        x: -70, opacity: 0, duration: 1.1,
+        scrollTrigger: { trigger: ".composer", start: "top 72%" }
+      });
+
+      gsap.from(".composer-visual", {
+        clipPath: "inset(100% 0 0 0)",
+        duration: 1.25,
+        ease: "power4.inOut",
+        scrollTrigger: { trigger: ".composer", start: "top 72%" }
+      });
+
+      if (!reduced) {
+        gsap.to(".composer-image.active img", {
+          scale: 1.08,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".composer",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1
+          }
+        });
+      }
+
+      // Closing
+      gsap.from(".closing-copy > *", {
+        y: 70,
+        opacity: 0,
+        duration: 1.05,
+        stagger: .12,
+        scrollTrigger: { trigger: ".closing-scene", start: "top 68%" }
+      });
+
+      gsap.from(".booking-ticket", {
+        y: 100,
+        opacity: 0,
+        duration: 1.1,
+        ease: "power3.out",
+        scrollTrigger: { trigger: ".booking-ticket", start: "top 88%" }
+      });
+
+      if (!reduced) {
+        gsap.to(".closing-scene::before", {});
+        gsap.to(".closing-scene", {
+          backgroundPosition: "50% 58%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".closing-scene",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1
+          }
+        });
+      }
+
+      // Demo form
+      const form = document.getElementById("bookingForm");
+      form.addEventListener("submit", event => {
+        event.preventDefault();
+        const button = form.querySelector("button");
+        const original = button.innerHTML;
+        button.innerHTML = "Đã nhận yêu cầu · VELORA sẽ liên hệ sớm";
+        button.style.pointerEvents = "none";
+
+        setTimeout(() => {
+          button.innerHTML = original;
+          button.style.pointerEvents = "";
+          form.reset();
+        }, 3000);
+      });
+
+      window.addEventListener("load", () => ScrollTrigger.refresh());
+    });
+  </script>
+</body>
+</html>
